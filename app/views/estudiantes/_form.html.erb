@@ -1,0 +1,49 @@
+<%= form_with(model: estudiante, local: true) do |form| %>
+  <% if estudiante.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(estudiante.errors.count, "error") %> impidieron guardar este estudiante:</h2>
+      <ul>
+        <% estudiante.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nombres, "Nombres" %><br>
+    <%= form.text_field :nombres %>
+  </div>
+
+  <div class="field">
+    <%= form.label :apellidos, "Apellidos" %><br>
+    <%= form.text_field :apellidos %>
+  </div>
+
+  <div class="field">
+    <%= form.label :carrera, "Carrera" %><br>
+    <%= form.text_field :carrera %>
+  </div>
+
+  <div class="field">
+    <%= form.label :carnet, "Carnet" %><br>
+    <%= form.text_field :carnet %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fecha_nacimiento, "Fecha de nacimiento" %><br>
+    <%= form.date_select :fecha_nacimiento, 
+        start_year: 1900, 
+        end_year: Date.today.year, 
+        order: [:year, :month, :day] %>
+  </div>
+
+  <div class="field">
+    <%= form.label :celular, "Celular" %><br>
+    <%= form.text_field :celular %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Create Estudiante" %>
+  </div>
+<% end %>
